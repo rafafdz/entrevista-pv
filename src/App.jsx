@@ -19,7 +19,6 @@ function App() {
     return matrix;
   };
 
-  // make a get request to api base
   const handleSearch = async (query) => {
     console.log(`Making query ${query}`);
     const response = await fetch(API_BASE + query);
@@ -28,14 +27,13 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col w-screen min-h-screen bg-gray-700 text-slate-100">
+    <div className="flex flex-col w-full min-h-screen bg-gray-700 text-slate-100">
       <div className="flex flex-row w-full mt-16 mb-48">
         <div className="grow"></div>
         <div className="basis-1/3 text-center">
           <p className="text-4xl font-bold">Lexica</p>
           <p className="text-gray-300">The Stable Diffusion search engine</p>
           <SeachBar handleSearch={handleSearch} />
-          {/* <div className="w-full h-12 bg-red-200"></div> */}
         </div>
         <div className="grow"></div>
       </div>
