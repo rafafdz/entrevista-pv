@@ -9,10 +9,10 @@ const Gallery = ({ images }) => {
       {images.map((chunk, chunk_idx) => (
         <div className="flex flex-col gap-1 w-full" key={chunk_idx}>
           {chunk.map((image) => (
-            <div className="rounded-md relative overflow-hidden" key={image.id}>
+            <div className="rounded-md relative overflow-hidden group" key={image.id}>
               <div className="absolute top-0 right-0 w-full h-full bg-black/0 hover:bg-black/70 transition">
                 <div className="flex items-end w-full h-full">
-                  <p className="grow p-5 text-sm opacity-100">{image.prompt}</p>
+                  <p className="grow p-5 text-sm opacity-0 group-hover:opacity-100 transition">{image.prompt}</p>
                 </div>
               </div>
 
