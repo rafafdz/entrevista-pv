@@ -1,34 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ProgressiveImage from "react-progressive-graceful-image";
+
+import Image from "./Image";
 
 const Gallery = ({ images }) => {
-
   return (
     <div className="grid grid-cols-5 gap-1 w-full px-5">
-      {images.map((chunk, chunk_idx) => (
-        <div className="flex flex-col gap-1 w-full" key={chunk_idx}>
+      {images.map((chunk, chunkIdx) => (
+        <div className="flex flex-col gap-1 w-full" key={chunkIdx}>
           {chunk.map((image) => (
-            <div className="rounded-md relative overflow-hidden group" key={image.id}>
-              <div className="absolute top-0 right-0 w-full h-full bg-black/0 hover:bg-black/70 transition">
-                <div className="flex items-end w-full h-full">
-                  <p className="grow p-5 text-sm opacity-0 group-hover:opacity-100 transition">{image.prompt}</p>
-                </div>
-              </div>
-
-              <ProgressiveImage
-                src={image.src}
-                placeholder={image.srcSmall}
-              >
-                {(src, loading) => (
-                  <img
-                    className={`rounded-md ${loading && 'blur-md'}`}
-                    src={src}
-                    alt={image.prompt}
-                  />
-                )}
-              </ProgressiveImage>
-            </div>
+            <Image {...image} key={image.id} />
           ))}
         </div>
       ))}
