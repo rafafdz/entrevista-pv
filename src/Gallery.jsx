@@ -17,6 +17,17 @@ const Gallery = ({ images }) => {
   );
 };
 
-Gallery.propTypes = {};
+// array of shape
+Gallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        prompt: PropTypes.string.isRequired,
+        src: PropTypes.string.isRequired,
+        srcSmall: PropTypes.string.isRequired,
+      })
+    )
+  ),
+};
 
 export default Gallery;

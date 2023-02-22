@@ -5,6 +5,7 @@ import Gallery from "./Gallery";
 
 function App() {
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const API_BASE = "https://lexica.art/api/v1/search?q=";
 
@@ -21,9 +22,11 @@ function App() {
 
   const handleSearch = async (query) => {
     console.log(`Making query ${query}`);
+    setLoading(true)
     const response = await fetch(API_BASE + query);
     const body = await response.json();
     setImages(createImageMatrix(body.images));
+    setLoading(false)
   };
 
   return (
@@ -33,7 +36,7 @@ function App() {
         <div className="basis-1/3 text-center">
           <p className="text-4xl font-bold">Lexica</p>
           <p className="text-gray-300">The Stable Diffusion search engine</p>
-          <SeachBar handleSearch={handleSearch} />
+          <SeachBar handleSearch={handleSearch} loading={loading} />
         </div>
         <div className="grow"></div>
       </div>
